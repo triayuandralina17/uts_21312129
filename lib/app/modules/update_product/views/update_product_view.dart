@@ -11,7 +11,7 @@ class UpdateProductView extends GetView<UpdateProductController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Update Product'),
+          title: const Text('Update Mahasiswa'),
           centerTitle: true,
         ),
         body: FutureBuilder<DocumentSnapshot<Object?>>(
@@ -26,17 +26,17 @@ class UpdateProductView extends GetView<UpdateProductController> {
                       controller: controller.cNama,
                       autocorrect: false,
                       textInputAction: TextInputAction.next,
-                      decoration: InputDecoration(labelText: "Nama Product"),
+                      decoration: InputDecoration(labelText: "Nama Mahasiswa"),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     TextField(
-                      controller: controller.cHarga,
+                      controller: controller.cNPM,
                       autocorrect: false,
                       textInputAction: TextInputAction.done,
                       keyboardType: TextInputType.number,
-                      decoration: InputDecoration(labelText: "Harga Product"),
+                      decoration: InputDecoration(labelText: "NPM Mahasiswa"),
                     ),
                     SizedBox(
                       height: 30,
@@ -44,7 +44,7 @@ class UpdateProductView extends GetView<UpdateProductController> {
                     ElevatedButton(
                         onPressed: () => controller.updateProduct(
                             controller.cNama.text,
-                            controller.cHarga.text,
+                            controller.cNPM.text,
                             Get.arguments),
                         child: Text("Ubah")),
                   ],

@@ -4,18 +4,18 @@ import 'package:get/get.dart';
 
 class UpdateProductController extends GetxController {
   late TextEditingController cNama;
-  late TextEditingController cHarga;
+  late TextEditingController cNPM;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Future<DocumentSnapshot<Object?>> getData(String id) async {
-    DocumentReference docRef = firestore.collection("products").doc(id);
+    DocumentReference docRef = firestore.collection("mahasiswa").doc(id);
 
     return docRef.get();
   }
 
   void updateProduct(String nama, String harga, String id) async {
-    DocumentReference productById = firestore.collection("products").doc(id);
+    DocumentReference productById = firestore.collection("mahasiswa").doc(id);
 
     try {
       await productById.update({
@@ -25,10 +25,10 @@ class UpdateProductController extends GetxController {
 
       Get.defaultDialog(
         title: "Berhasil",
-        middleText: "Berhasil mengubah data product.",
+        middleText: "Berhasil mengubah data mahasiswa.",
         onConfirm: () {
           cNama.clear();
-          cHarga.clear();
+          cNPM.clear();
           Get.back();
           Get.back();
         },
@@ -38,7 +38,7 @@ class UpdateProductController extends GetxController {
       print(e);
       Get.defaultDialog(
         title: "Terjadi kesalahan",
-        middleText: "Gagal menambahkan product.",
+        middleText: "Gagal menambahkan mahasiswa.",
       );
     }
   }
@@ -46,13 +46,13 @@ class UpdateProductController extends GetxController {
   @override
   void onInit() {
     cNama = TextEditingController();
-    cHarga = TextEditingController();
+    cNPM = TextEditingController();
     super.onInit();
   }
 
   void onClose() {
     cNama.dispose();
-    cHarga.dispose();
+    cNPM.dispose();
     super.onClose();
   }
 }

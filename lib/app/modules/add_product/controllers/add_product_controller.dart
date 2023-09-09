@@ -5,23 +5,23 @@ import 'package:get/get.dart';
 
 class AddProductController extends GetxController {
   late TextEditingController cNama;
-  late TextEditingController cHarga;
+  late TextEditingController cNPM;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  void addProduct(String nama, String harga) async {
-    CollectionReference products = firestore.collection("products");
+  void addProduct(String nama, String NPM) async {
+    CollectionReference mahasiswa = firestore.collection("mahasiswa");
     try {
-      await products.add({
+      await mahasiswa.add({
         "name": nama,
-        "price": harga,
+        "price": NPM,
       });
       Get.defaultDialog(
           title: "Berhasil",
           middleText: "Berhasil menyimpan data produk",
           onConfirm: () {
             cNama.clear();
-            cHarga.clear();
+            cNPM.clear();
             Get.back();
             Get.back();
             textConfirm:
@@ -34,7 +34,7 @@ class AddProductController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     cNama = TextEditingController();
-    cHarga = TextEditingController();
+    cNPM = TextEditingController();
     super.onInit();
   }
 
@@ -42,7 +42,7 @@ class AddProductController extends GetxController {
   void onClose() {
     // TODO: implement onClose
     cNama.dispose();
-    cHarga.dispose();
+    cNPM.dispose();
     super.onClose();
   }
 }

@@ -6,6 +6,7 @@ environment:
   sdk: '>=2.19.6 <3.0.0'
 
 dependencies: 
+  google_sign_in: ^6.1.5
   cupertino_icons: ^1.0.2
   get: 4.6.5
   flutter: 
